@@ -14,13 +14,9 @@ const contactsSlice = createSlice({
       localStorage.setItem('contacts', JSON.stringify(state));
     },
     deleteContact: (state, action) => {
-      const contactIndex = state.findIndex(
-        contact => contact.id === action.payload
-      );
-      if (contactIndex !== -1) {
-        state.splice(contactIndex, 1);
-        localStorage.setItem('contacts', JSON.stringify(state));
-      }
+      const index = state.findIndex(contact => contact.id === action.payload);
+      state.splice(index, 1);
+      localStorage.setItem('contacts', JSON.stringify(state));
     },
   },
 });
